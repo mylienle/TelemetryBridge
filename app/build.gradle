@@ -26,9 +26,9 @@ dependencies {
     implementation project(':library')
     
     // OpenTelemetry dependencies
-    implementation 'io.opentelemetry:opentelemetry-api:1.37.0'
-    implementation 'io.opentelemetry:opentelemetry-sdk:1.37.0'
-    implementation 'io.opentelemetry:opentelemetry-exporter-otlp:1.37.0'
+    implementation 'io.opentelemetry:opentelemetry-api:1.40.0'
+    implementation 'io.opentelemetry:opentelemetry-sdk:1.40.0'
+    implementation 'io.opentelemetry:opentelemetry-exporter-otlp:1.40.0'
     
     // Android dependencies
     implementation 'androidx.appcompat:appcompat:1.6.1'

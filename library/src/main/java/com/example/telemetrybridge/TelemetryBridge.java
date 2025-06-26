@@ -3,7 +3,7 @@ package com.example.telemetrybridge;
 import io.opentelemetry.api.OpenTelemetry;
 import io.opentelemetry.api.trace.Span;
 import io.opentelemetry.api.trace.Tracer;
-import io.opentelemetry.exporter.otlp.trace.OtlpGrpcSpanExporter;
+import io.opentelemetry.exporter.otlp.http.trace.OtlpHttpSpanExporter;
 import io.opentelemetry.sdk.OpenTelemetrySdk;
 import io.opentelemetry.sdk.trace.SdkTracerProvider;
 import io.opentelemetry.sdk.trace.export.BatchSpanProcessor;
@@ -37,8 +37,9 @@ public class TelemetryBridge {
     private static final String REDACTED = "[REDACTED]";
 
     public static void initialize(String endpoint) {
-        OtlpGrpcSpanExporter exporter = OtlpGrpcSpanExporter.builder()
+        OtlpHttpSpanExporter exporter = OtlpHttpSpanExporter.builder()
                 .setEndpoint(endpoint)
+                .setTimeout(30, TimeUnit.SECONDS)
                 .build();
 
         SdkTracerProvider tracerProvider = SdkTracerProvider.builder()
@@ -53,7 +54,6 @@ public class TelemetryBridge {
         meter = GlobalOpenTelemetry.get().getMeter("TelemetryBridge");
     }
 
-    // Track a simple event (span) with optional properties and metrics
     public static void trackEvent(String name) {
         trackEvent(name, null, null);
     }
@@ -75,7 +75,6 @@ public class TelemetryBridge {
         span.end();
     }
 
-    // Track a trace/log message with severity
     public static void trackTrace(String message, String severity) {
         if (tracer == null) return;
         Span span = tracer.spanBuilder("Trace").startSpan();
@@ -85,7 +84,6 @@ public class TelemetryBridge {
         span.end();
     }
 
-    // Track an exception with optional properties
     public static void trackException(String message) {
         trackException(message, null);
     }
@@ -104,14 +102,12 @@ public class TelemetryBridge {
         span.end();
     }
 
-    // Track a custom metric
     public static void trackMetric(String name, double value) {
         if (meter == null) return;
         LongCounter counter = meter.counterBuilder(name).build();
         counter.add((long) value);
     }
 
-    // Track a dependency (external call)
     public static void trackDependency(String name, String type, String target, boolean success, long durationMs) {
         if (tracer == null) return;
         Span span = tracer.spanBuilder(name)
@@ -126,7 +122,6 @@ public class TelemetryBridge {
         span.end();
     }
 
-    // Set user context
     public static void setUserId(String id) {
         userId = id;
     }
@@ -134,7 +129,6 @@ public class TelemetryBridge {
         sessionId = id;
     }
 
-    // Helper methods for log levels (like Application Insights)
     public static void trackInfo(String message) {
         trackTrace(message, "INFO");
     }
@@ -151,7 +145,6 @@ public class TelemetryBridge {
         trackTrace(message, "DEBUG");
     }
 
-    // Track HTTP request (like Application Insights TrackRequest)
     public static void trackRequest(String name, String url, String method, long durationMs, boolean success) {
         if (tracer == null) return;
         Span span = tracer.spanBuilder(name)
@@ -167,7 +160,6 @@ public class TelemetryBridge {
         span.end();
     }
 
-    // Track page view/screen view (like Application Insights TrackPageView)
     public static void trackPageView(String pageName) {
         trackPageView(pageName, null, null);
     }
@@ -194,7 +186,6 @@ public class TelemetryBridge {
         span.end();
     }
 
-    // Track availability/health check (like Application Insights TrackAvailability)
     public static void trackAvailability(String name, long durationMs, boolean success, String message) {
         if (tracer == null) return;
         Span span = tracer.spanBuilder("Availability")
@@ -210,7 +201,6 @@ public class TelemetryBridge {
         span.end();
     }
 
-    // Enhanced dependency tracking with more details
     public static void trackDependency(String name, String type, String target, String data,boolean success, long durationMs) {
         if (tracer == null) return;
         Span span = tracer.spanBuilder(name)
@@ -226,7 +216,6 @@ public class TelemetryBridge {
         span.end();
     }
 
-    // Track custom event with timestamp
     public static void trackEvent(String name, Map<String, String> properties, Map<String, Double> metrics, long timestamp) {
         if (tracer == null) return;
         Span span = tracer.spanBuilder(name).startSpan();
@@ -246,7 +235,6 @@ public class TelemetryBridge {
         span.end();
     }
 
-    // Set device context (like Application Insights device context)
     public static void setDeviceId(String id) {
         deviceId = id;
     }
@@ -263,7 +251,6 @@ public class TelemetryBridge {
         customDimensions.clear();
     }
 
-    // Enhanced context with device info and custom dimensions
     private static void addContext(Span span) {
         if (userId != null) span.setAttribute("user.id", userId);
         if (sessionId != null) span.setAttribute("session.id", sessionId);
@@ -276,13 +263,11 @@ public class TelemetryBridge {
         }
     }
 
-    // Track metric with custom properties
     public static void trackMetric(String name, double value, Map<String, String> properties) {
         if (meter == null) return;
         LongCounter counter = meter.counterBuilder(name).build();
         counter.add((long) value);
 
-        // Also track as span for consistency
         if (tracer != null) {
             Span span = tracer.spanBuilder("Metric").startSpan();
             span.setAttribute("metric.name", name);
@@ -299,7 +284,6 @@ public class TelemetryBridge {
         }
     }
 
-    // Track exception with stack trace
     public static void trackException(Exception exception, Map<String, String> properties) {
         if (tracer == null) return;
         Span span = tracer.spanBuilder("Exception").startSpan();
@@ -321,7 +305,13 @@ public class TelemetryBridge {
         Map<String, String> filtered = new HashMap<>();
         for (Map.Entry<String, String> entry : input.entrySet()) {
             String key = entry.getKey().toLowerCase();
-            boolean isSensitive = SENSITIVE_KEYS.stream().anyMatch(key::contains);
+            boolean isSensitive = false;
+            for (String sensitiveKey : SENSITIVE_KEYS) {
+                if (key.contains(sensitiveKey)) {
+                    isSensitive = true;
+                    break;
+                }
+            }
             filtered.put(entry.getKey(), isSensitive ? REDACTED : entry.getValue());
         }
         return filtered;
