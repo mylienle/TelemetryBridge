@@ -13,7 +13,6 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        // Set up context (like Application Insights)
         TelemetryBridge.setDeviceId("android_device_123");
         TelemetryBridge.setAppVersion("1.0.0");
         TelemetryBridge.setCustomDimension("environment", "development");
