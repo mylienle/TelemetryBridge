@@ -4,7 +4,10 @@ import android.os.Bundle;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.example.telemetrybridge.SeverityLevel;
 import com.example.telemetrybridge.TelemetryBridge;
+import com.example.telemetrybridge.TelemetryConfiguration;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -13,18 +16,19 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        TelemetryBridge.setDeviceId("android_device_123");
-        TelemetryBridge.setAppVersion("1.0.0");
-        TelemetryBridge.setCustomDimension("environment", "development");
-        TelemetryBridge.setCustomDimension("app_type", "demo");
+        TelemetryConfiguration config = new TelemetryConfiguration();
+        config.setCloudRoleName("com.xcrsek.certification.sek");
+        config.setCloudRoleInstance("localhost");
+        config.setAppVersion("vQA_1.2.29");
+        config.setTimeoutSeconds(10);
+        config.setSamplingRatio(0.2);
 
-        // Track page view
-        TelemetryBridge.trackPageView("MainActivity");
+        TelemetryBridge.initialize("https://gj6hx7pd-5001.asse.devtunnels.ms/logs", config);
 
         LinearLayout layout = new LinearLayout(this);
         layout.setOrientation(LinearLayout.VERTICAL);
         layout.setPadding(50, 50, 50, 50);
-        
+
         // Button 1: Basic Event with Sensitive Data (will be redacted)
         Button btnEvent = new Button(this);
         btnEvent.setText("Track Event (with sensitive data)");
@@ -47,7 +51,7 @@ public class MainActivity extends AppCompatActivity {
             TelemetryBridge.trackDependency("File Read", "File", "local_storage", false, 500);
         });
         layout.addView(btnDependency);
-        
+
         // Button 5: Metrics (like Application Insights TrackMetric)
         Button btnMetric = new Button(this);
         btnMetric.setText("Track Metrics");
@@ -66,11 +70,14 @@ public class MainActivity extends AppCompatActivity {
         btnException.setText("Track Exception with Stack Trace");
         btnException.setOnClickListener(v -> {
             try {
-                throw new RuntimeException("This is a test exception with stack trace");
+                throw new RuntimeException("Reason why logon failed: 10");
             } catch (Exception e) {
                 Map<String, String> exceptionProps = new HashMap<>();
-                exceptionProps.put("screen", "main");
-                exceptionProps.put("action", "test_exception");
+                exceptionProps.put("Message", "IsFunctionAvailable");
+                exceptionProps.put("Member", "IsFunctionAvailable");
+                exceptionProps.put("Line", "111");
+                exceptionProps.put("File", "/Library/DATA/WORK/XCR/PayApp/XAC/CloudBanking/CloudBanking.Shell/CloudBanking.ShellContainer/Functions/Offline.cs");
+                exceptionProps.put("SerialNumber", "F21010143801038");
                 TelemetryBridge.trackException(e, exceptionProps);
             }
         });
@@ -83,14 +90,32 @@ public class MainActivity extends AppCompatActivity {
             Map<String, String> eventProps = new HashMap<>();
             eventProps.put("feature", "advanced_telemetry");
             eventProps.put("user_level", "expert");
-            
             Map<String, Double> eventMetrics = new HashMap<>();
             eventMetrics.put("feature_usage_count", 5.0);
-            
-            long timestamp = System.currentTimeMillis();
-            TelemetryBridge.trackEvent("CustomFeatureUsed", eventProps, eventMetrics, timestamp);
+            TelemetryBridge.trackEvent("CustomFeatureUsed", eventProps, eventMetrics);
         });
         layout.addView(btnCustomEvent);
+
+        Map<String, String> custom = new HashMap<>();
+        custom.put("PackageName", "com.xcrsek.certification.sek");
+        custom.put("PlatformOs", "10");
+        custom.put("LocalDateTime", "03/04/2025 23:47:26");
+        custom.put("AppVersion", "vQA_1.2.29");
+        custom.put("Member", "DownloadParams");
+        custom.put("Line", "80");
+        custom.put("Message", "TMS download failed");
+        custom.put("Platform", "Android");
+        custom.put("File", "C:\\Users\\Antonio\\source\\vcxpros-android\\CloudBanking\\CloudBanking.Shell\\CloudBanking.Hardware\\CloudBanking.PaxSdk.Services\\TMSService.cs");
+
+        TelemetryBridge.trackTrace("TMS download failed", SeverityLevel.INFO, custom);
+
+        Map<String, String> exceptionProps = new HashMap<>();
+        exceptionProps.put("Message", "IsFunctionAvailable");
+        exceptionProps.put("Member", "IsFunctionAvailable");
+        exceptionProps.put("Line", "111");
+        exceptionProps.put("File", "/Library/DATA/WORK/XCR/PayApp/XAC/CloudBanking/CloudBanking.Shell/CloudBanking.ShellContainer/Functions/Offline.cs");
+        exceptionProps.put("SerialNumber", "F21010143801038");
+        TelemetryBridge.trackException(new Exception("Reason why logon failed: 10"), exceptionProps);
         
         setContentView(layout);
     }

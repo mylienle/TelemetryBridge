@@ -25,12 +25,6 @@ dependencies {
     // Reference the TelemetryBridge library
     implementation project(':library')
     
-    // OpenTelemetry dependencies
-    implementation 'io.opentelemetry:opentelemetry-api:1.40.0'
-    implementation 'io.opentelemetry:opentelemetry-sdk:1.40.0'
-    implementation 'io.opentelemetry:opentelemetry-exporter-otlp:1.40.0'
-    
     // Android dependencies
     implementation 'androidx.appcompat:appcompat:1.6.1'
-    implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
-} 
+}
