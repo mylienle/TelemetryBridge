@@ -17,6 +17,13 @@ import java.util.concurrent.TimeUnit;
 import io.opentelemetry.api.GlobalOpenTelemetry;
 import com.google.gson.Gson;
 
+/**
+ * TelemetryBridge - A library for recording telemetry (event, trace, exception, metric, dependency)
+ * 
+ * Usage:
+ * 1. Call initialize() with endpoint and TelemetryConfiguration.
+ * 2. Use track* methods to record custom telemetry.
+ */
 public class TelemetryBridge {
     private static Tracer tracer;
     private static OpenTelemetry openTelemetry;
@@ -24,7 +31,9 @@ public class TelemetryBridge {
     private static TelemetryConfiguration configuration;
 
     /**
-     * Initialize with config (timeout and samplingRatio are read from config).
+     * Initialize TelemetryBridge with endpoint and configuration.
+     * @param endpoint OTLP or REST API endpoint to send telemetry.
+     * @param config TelemetryConfiguration containing configuration details.
      */
     public static void initialize(String endpoint, TelemetryConfiguration config) {
         configuration = config;
@@ -46,7 +55,7 @@ public class TelemetryBridge {
     }
 
     /**
-     * Force flush all logs (like Application Insights Flush)
+     * Flush all remaining logs (similar to Application Insights Flush).
      */
     public static void flush() {
         if (openTelemetry != null && openTelemetry instanceof OpenTelemetrySdk) {
@@ -56,12 +65,22 @@ public class TelemetryBridge {
     }
 
     // --- Track Event ---
+    /**
+     * Record a simple event.
+     * @param name Event name
+     */
     public static void trackEvent(String name) {
         trackEvent(name, null, null);
     }
     public static void trackEvent(String name, Map<String, String> properties) {
         trackEvent(name, properties, null);
     }
+    /**
+     * Record an event with properties and metrics.
+     * @param name Event name
+     * @param properties Custom properties
+     * @param metrics Custom metrics
+     */
     public static void trackEvent(String name, Map<String, String> properties, Map<String, Double> metrics) {
         if (tracer == null) return;
         Span span = tracer.spanBuilder(name).startSpan();
@@ -81,6 +100,9 @@ public class TelemetryBridge {
     }
 
     // --- Track Trace ---
+    /**
+     * Record a trace log with message, severity, and properties.
+     */
     public static void trackTrace(String message) {
         trackTrace(message, SeverityLevel.INFO, null);
     }
@@ -106,6 +128,9 @@ public class TelemetryBridge {
     }
 
     // --- Track Exception ---
+    /**
+     * Record an exception (should be called manually or integrated with UncaughtExceptionHandler).
+     */
     public static void trackException(Exception exception) {
         trackException(exception, null, null);
     }
@@ -133,6 +158,9 @@ public class TelemetryBridge {
     }
 
     // --- Track Metric ---
+    /**
+     * Record a custom metric.
+     */
     public static void trackMetric(String name, double value) {
         trackMetric(name, value, null);
     }
@@ -156,6 +184,9 @@ public class TelemetryBridge {
     }
 
     // --- Track Dependency ---
+    /**
+     * Record a dependency (e.g., HTTP, DB call).
+     */
     public static void trackDependency(String name, String type, String target, boolean success, long durationMs) {
         trackDependency(name, type, target, success, durationMs, null);
     }
@@ -179,6 +210,9 @@ public class TelemetryBridge {
         span.end();
     }
 
+    /**
+     * Add context (app version, role, key, ...) to the span.
+     */
     private static void addContext(Span span) {
         if (configuration != null) {
             if (configuration.getAppVersion() != null)
@@ -194,7 +228,9 @@ public class TelemetryBridge {
         }
     }
 
-    // Add sensitive data redaction
+    /**
+     * Redact sensitive data according to the configured key list.
+     */
     private static Map<String, String> redactSensitive(Map<String, String> input) {
         if (configuration == null || configuration.getSensitiveKeys() == null || configuration.getSensitiveKeys().isEmpty()) return input;
         Map<String, String> filtered = new java.util.HashMap<>();

@@ -1,5 +1,8 @@
 package com.example.telemetrybridge;
 
+/**
+ * Enum representing severity levels for log/trace/exception.
+ */
 public enum SeverityLevel {
     VERBOSE(0), INFO(1), WARN(2), ERROR(3), CRITICAL(4);
     private final int value;
