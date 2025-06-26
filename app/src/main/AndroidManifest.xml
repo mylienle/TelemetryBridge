@@ -2,7 +2,6 @@
     package="com.example.telemetryapp">
 
     <application
-        android:name=".MyApp"
         android:allowBackup="true"
         android:label="Telemetry App"
         android:icon="@mipmap/ic_launcher"

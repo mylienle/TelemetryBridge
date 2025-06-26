@@ -11,8 +11,8 @@
 9-->/Users/mac/AndroidStudioProjects/TelemetryBridge/app/src/main/AndroidManifest.xml
 10
 11    <uses-permission android:name="android.permission.INTERNET" />
-11-->/Users/mac/AndroidStudioProjects/TelemetryBridge/app/src/main/AndroidManifest.xml:21:5-67
-11-->/Users/mac/AndroidStudioProjects/TelemetryBridge/app/src/main/AndroidManifest.xml:21:22-64
+11-->/Users/mac/AndroidStudioProjects/TelemetryBridge/app/src/main/AndroidManifest.xml:20:5-67
+11-->/Users/mac/AndroidStudioProjects/TelemetryBridge/app/src/main/AndroidManifest.xml:20:22-64
 12
 13    <permission
 13-->[androidx.core:core:1.9.0] /Users/mac/.gradle/caches/8.9/transforms/0d3aa342b9549cc1543d2e7fe296e21a/transformed/core-1.9.0/AndroidManifest.xml:22:5-24:47
@@ -26,64 +26,61 @@
 17-->[androidx.core:core:1.9.0] /Users/mac/.gradle/caches/8.9/transforms/0d3aa342b9549cc1543d2e7fe296e21a/transformed/core-1.9.0/AndroidManifest.xml:26:22-94
 18
 19    <application
-19-->/Users/mac/AndroidStudioProjects/TelemetryBridge/app/src/main/AndroidManifest.xml:4:5-20:19
-20        android:name="com.example.telemetryapp.MyApp"
-20-->/Users/mac/AndroidStudioProjects/TelemetryBridge/app/src/main/AndroidManifest.xml:5:9-30
-21        android:allowBackup="true"
-21-->/Users/mac/AndroidStudioProjects/TelemetryBridge/app/src/main/AndroidManifest.xml:6:9-35
-22        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
-22-->[androidx.core:core:1.9.0] /Users/mac/.gradle/caches/8.9/transforms/0d3aa342b9549cc1543d2e7fe296e21a/transformed/core-1.9.0/AndroidManifest.xml:28:18-86
-23        android:debuggable="true"
-24        android:icon="@mipmap/ic_launcher"
-24-->/Users/mac/AndroidStudioProjects/TelemetryBridge/app/src/main/AndroidManifest.xml:8:9-43
-25        android:label="Telemetry App"
-25-->/Users/mac/AndroidStudioProjects/TelemetryBridge/app/src/main/AndroidManifest.xml:7:9-38
-26        android:roundIcon="@mipmap/ic_launcher_round"
-26-->/Users/mac/AndroidStudioProjects/TelemetryBridge/app/src/main/AndroidManifest.xml:9:9-54
-27        android:supportsRtl="true"
-27-->/Users/mac/AndroidStudioProjects/TelemetryBridge/app/src/main/AndroidManifest.xml:10:9-35
-28        android:testOnly="true"
-29        android:theme="@style/Theme.AppCompat.Light.NoActionBar" >
-29-->/Users/mac/AndroidStudioProjects/TelemetryBridge/app/src/main/AndroidManifest.xml:11:9-65
-30        <activity
-30-->/Users/mac/AndroidStudioProjects/TelemetryBridge/app/src/main/AndroidManifest.xml:12:9-19:20
-31            android:name="com.example.telemetryapp.MainActivity"
-31-->/Users/mac/AndroidStudioProjects/TelemetryBridge/app/src/main/AndroidManifest.xml:13:13-41
-32            android:exported="true" >
-32-->/Users/mac/AndroidStudioProjects/TelemetryBridge/app/src/main/AndroidManifest.xml:14:13-36
-33            <intent-filter>
-33-->/Users/mac/AndroidStudioProjects/TelemetryBridge/app/src/main/AndroidManifest.xml:15:13-18:29
-34                <action android:name="android.intent.action.MAIN" />
-34-->/Users/mac/AndroidStudioProjects/TelemetryBridge/app/src/main/AndroidManifest.xml:16:17-69
-34-->/Users/mac/AndroidStudioProjects/TelemetryBridge/app/src/main/AndroidManifest.xml:16:25-66
-35
-36                <category android:name="android.intent.category.LAUNCHER" />
-36-->/Users/mac/AndroidStudioProjects/TelemetryBridge/app/src/main/AndroidManifest.xml:17:17-77
-36-->/Users/mac/AndroidStudioProjects/TelemetryBridge/app/src/main/AndroidManifest.xml:17:27-74
-37            </intent-filter>
-38        </activity>
-39
-40        <provider
-40-->[androidx.emoji2:emoji2:1.2.0] /Users/mac/.gradle/caches/8.9/transforms/0205d01b13d19ff48c6b4bbca7646eb1/transformed/jetified-emoji2-1.2.0/AndroidManifest.xml:24:9-32:20
-41            android:name="androidx.startup.InitializationProvider"
-41-->[androidx.emoji2:emoji2:1.2.0] /Users/mac/.gradle/caches/8.9/transforms/0205d01b13d19ff48c6b4bbca7646eb1/transformed/jetified-emoji2-1.2.0/AndroidManifest.xml:25:13-67
-42            android:authorities="com.example.telemetryapp.androidx-startup"
-42-->[androidx.emoji2:emoji2:1.2.0] /Users/mac/.gradle/caches/8.9/transforms/0205d01b13d19ff48c6b4bbca7646eb1/transformed/jetified-emoji2-1.2.0/AndroidManifest.xml:26:13-68
-43            android:exported="false" >
-43-->[androidx.emoji2:emoji2:1.2.0] /Users/mac/.gradle/caches/8.9/transforms/0205d01b13d19ff48c6b4bbca7646eb1/transformed/jetified-emoji2-1.2.0/AndroidManifest.xml:27:13-37
-44            <meta-data
-44-->[androidx.emoji2:emoji2:1.2.0] /Users/mac/.gradle/caches/8.9/transforms/0205d01b13d19ff48c6b4bbca7646eb1/transformed/jetified-emoji2-1.2.0/AndroidManifest.xml:29:13-31:52
-45                android:name="androidx.emoji2.text.EmojiCompatInitializer"
-45-->[androidx.emoji2:emoji2:1.2.0] /Users/mac/.gradle/caches/8.9/transforms/0205d01b13d19ff48c6b4bbca7646eb1/transformed/jetified-emoji2-1.2.0/AndroidManifest.xml:30:17-75
-46                android:value="androidx.startup" />
-46-->[androidx.emoji2:emoji2:1.2.0] /Users/mac/.gradle/caches/8.9/transforms/0205d01b13d19ff48c6b4bbca7646eb1/transformed/jetified-emoji2-1.2.0/AndroidManifest.xml:31:17-49
-47            <meta-data
-47-->[androidx.lifecycle:lifecycle-process:2.4.1] /Users/mac/.gradle/caches/8.9/transforms/4abddb3c4c99e8f97082dc63036a713f/transformed/jetified-lifecycle-process-2.4.1/AndroidManifest.xml:31:13-33:52
-48                android:name="androidx.lifecycle.ProcessLifecycleInitializer"
-48-->[androidx.lifecycle:lifecycle-process:2.4.1] /Users/mac/.gradle/caches/8.9/transforms/4abddb3c4c99e8f97082dc63036a713f/transformed/jetified-lifecycle-process-2.4.1/AndroidManifest.xml:32:17-78
-49                android:value="androidx.startup" />
-49-->[androidx.lifecycle:lifecycle-process:2.4.1] /Users/mac/.gradle/caches/8.9/transforms/4abddb3c4c99e8f97082dc63036a713f/transformed/jetified-lifecycle-process-2.4.1/AndroidManifest.xml:33:17-49
-50        </provider>
-51    </application>
-52
-53</manifest>
+19-->/Users/mac/AndroidStudioProjects/TelemetryBridge/app/src/main/AndroidManifest.xml:4:5-19:19
+20        android:allowBackup="true"
+20-->/Users/mac/AndroidStudioProjects/TelemetryBridge/app/src/main/AndroidManifest.xml:5:9-35
+21        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
+21-->[androidx.core:core:1.9.0] /Users/mac/.gradle/caches/8.9/transforms/0d3aa342b9549cc1543d2e7fe296e21a/transformed/core-1.9.0/AndroidManifest.xml:28:18-86
+22        android:debuggable="true"
+23        android:icon="@mipmap/ic_launcher"
+23-->/Users/mac/AndroidStudioProjects/TelemetryBridge/app/src/main/AndroidManifest.xml:7:9-43
+24        android:label="Telemetry App"
+24-->/Users/mac/AndroidStudioProjects/TelemetryBridge/app/src/main/AndroidManifest.xml:6:9-38
+25        android:roundIcon="@mipmap/ic_launcher_round"
+25-->/Users/mac/AndroidStudioProjects/TelemetryBridge/app/src/main/AndroidManifest.xml:8:9-54
+26        android:supportsRtl="true"
+26-->/Users/mac/AndroidStudioProjects/TelemetryBridge/app/src/main/AndroidManifest.xml:9:9-35
+27        android:theme="@style/Theme.AppCompat.Light.NoActionBar" >
+27-->/Users/mac/AndroidStudioProjects/TelemetryBridge/app/src/main/AndroidManifest.xml:10:9-65
+28        <activity
+28-->/Users/mac/AndroidStudioProjects/TelemetryBridge/app/src/main/AndroidManifest.xml:11:9-18:20
+29            android:name="com.example.telemetryapp.MainActivity"
+29-->/Users/mac/AndroidStudioProjects/TelemetryBridge/app/src/main/AndroidManifest.xml:12:13-41
+30            android:exported="true" >
+30-->/Users/mac/AndroidStudioProjects/TelemetryBridge/app/src/main/AndroidManifest.xml:13:13-36
+31            <intent-filter>
+31-->/Users/mac/AndroidStudioProjects/TelemetryBridge/app/src/main/AndroidManifest.xml:14:13-17:29
+32                <action android:name="android.intent.action.MAIN" />
+32-->/Users/mac/AndroidStudioProjects/TelemetryBridge/app/src/main/AndroidManifest.xml:15:17-69
+32-->/Users/mac/AndroidStudioProjects/TelemetryBridge/app/src/main/AndroidManifest.xml:15:25-66
+33
+34                <category android:name="android.intent.category.LAUNCHER" />
+34-->/Users/mac/AndroidStudioProjects/TelemetryBridge/app/src/main/AndroidManifest.xml:16:17-77
+34-->/Users/mac/AndroidStudioProjects/TelemetryBridge/app/src/main/AndroidManifest.xml:16:27-74
+35            </intent-filter>
+36        </activity>
+37
+38        <provider
+38-->[androidx.emoji2:emoji2:1.2.0] /Users/mac/.gradle/caches/8.9/transforms/0205d01b13d19ff48c6b4bbca7646eb1/transformed/jetified-emoji2-1.2.0/AndroidManifest.xml:24:9-32:20
+39            android:name="androidx.startup.InitializationProvider"
+39-->[androidx.emoji2:emoji2:1.2.0] /Users/mac/.gradle/caches/8.9/transforms/0205d01b13d19ff48c6b4bbca7646eb1/transformed/jetified-emoji2-1.2.0/AndroidManifest.xml:25:13-67
+40            android:authorities="com.example.telemetryapp.androidx-startup"
+40-->[androidx.emoji2:emoji2:1.2.0] /Users/mac/.gradle/caches/8.9/transforms/0205d01b13d19ff48c6b4bbca7646eb1/transformed/jetified-emoji2-1.2.0/AndroidManifest.xml:26:13-68
+41            android:exported="false" >
+41-->[androidx.emoji2:emoji2:1.2.0] /Users/mac/.gradle/caches/8.9/transforms/0205d01b13d19ff48c6b4bbca7646eb1/transformed/jetified-emoji2-1.2.0/AndroidManifest.xml:27:13-37
+42            <meta-data
+42-->[androidx.emoji2:emoji2:1.2.0] /Users/mac/.gradle/caches/8.9/transforms/0205d01b13d19ff48c6b4bbca7646eb1/transformed/jetified-emoji2-1.2.0/AndroidManifest.xml:29:13-31:52
+43                android:name="androidx.emoji2.text.EmojiCompatInitializer"
+43-->[androidx.emoji2:emoji2:1.2.0] /Users/mac/.gradle/caches/8.9/transforms/0205d01b13d19ff48c6b4bbca7646eb1/transformed/jetified-emoji2-1.2.0/AndroidManifest.xml:30:17-75
+44                android:value="androidx.startup" />
+44-->[androidx.emoji2:emoji2:1.2.0] /Users/mac/.gradle/caches/8.9/transforms/0205d01b13d19ff48c6b4bbca7646eb1/transformed/jetified-emoji2-1.2.0/AndroidManifest.xml:31:17-49
+45            <meta-data
+45-->[androidx.lifecycle:lifecycle-process:2.4.1] /Users/mac/.gradle/caches/8.9/transforms/4abddb3c4c99e8f97082dc63036a713f/transformed/jetified-lifecycle-process-2.4.1/AndroidManifest.xml:31:13-33:52
+46                android:name="androidx.lifecycle.ProcessLifecycleInitializer"
+46-->[androidx.lifecycle:lifecycle-process:2.4.1] /Users/mac/.gradle/caches/8.9/transforms/4abddb3c4c99e8f97082dc63036a713f/transformed/jetified-lifecycle-process-2.4.1/AndroidManifest.xml:32:17-78
+47                android:value="androidx.startup" />
+47-->[androidx.lifecycle:lifecycle-process:2.4.1] /Users/mac/.gradle/caches/8.9/transforms/4abddb3c4c99e8f97082dc63036a713f/transformed/jetified-lifecycle-process-2.4.1/AndroidManifest.xml:33:17-49
+48        </provider>
+49    </application>
+50
+51</manifest>

@@ -5,9 +5,9 @@ import android.widget.Button;
 import android.widget.LinearLayout;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.telemetrybridge.SeverityLevel;
-import com.example.telemetrybridge.TelemetryBridge;
-import com.example.telemetrybridge.TelemetryConfiguration;
+import com.xcr.telemetrybridge.SeverityLevel;
+import com.xcr.telemetrybridge.TelemetryBridge;
+import com.xcr.telemetrybridge.TelemetryConfiguration;
 import java.util.HashMap;
 import java.util.Map;
 
