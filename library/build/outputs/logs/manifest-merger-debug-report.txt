@@ -1,0 +1,25 @@
+-- Merging decision tree log ---
+manifest
+ADDED from /Users/mac/AndroidStudioProjects/TelemetryBridge/library/build/intermediates/tmp/ProcessLibraryManifest/debug/tempAndroidManifest18204287355877929076.xml:2:13-83
+INJECTED from /Users/mac/AndroidStudioProjects/TelemetryBridge/library/build/intermediates/tmp/ProcessLibraryManifest/debug/tempAndroidManifest18204287355877929076.xml:2:13-83
+INJECTED from /Users/mac/AndroidStudioProjects/TelemetryBridge/library/build/intermediates/tmp/ProcessLibraryManifest/debug/tempAndroidManifest18204287355877929076.xml:2:13-83
+	package
+		INJECTED from /Users/mac/AndroidStudioProjects/TelemetryBridge/library/build/intermediates/tmp/ProcessLibraryManifest/debug/tempAndroidManifest18204287355877929076.xml
+		ADDED from /Users/mac/AndroidStudioProjects/TelemetryBridge/library/build/intermediates/tmp/ProcessLibraryManifest/debug/tempAndroidManifest18204287355877929076.xml:2:13-83
+		INJECTED from /Users/mac/AndroidStudioProjects/TelemetryBridge/library/build/intermediates/tmp/ProcessLibraryManifest/debug/tempAndroidManifest18204287355877929076.xml
+	xmlns:android
+		ADDED from /Users/mac/AndroidStudioProjects/TelemetryBridge/library/build/intermediates/tmp/ProcessLibraryManifest/debug/tempAndroidManifest18204287355877929076.xml:2:23-81
+uses-sdk
+INJECTED from /Users/mac/AndroidStudioProjects/TelemetryBridge/library/build/intermediates/tmp/ProcessLibraryManifest/debug/tempAndroidManifest18204287355877929076.xml reason: use-sdk injection requested
+INJECTED from /Users/mac/AndroidStudioProjects/TelemetryBridge/library/build/intermediates/tmp/ProcessLibraryManifest/debug/tempAndroidManifest18204287355877929076.xml
+INJECTED from /Users/mac/AndroidStudioProjects/TelemetryBridge/library/build/intermediates/tmp/ProcessLibraryManifest/debug/tempAndroidManifest18204287355877929076.xml
+INJECTED from /Users/mac/AndroidStudioProjects/TelemetryBridge/library/build/intermediates/tmp/ProcessLibraryManifest/debug/tempAndroidManifest18204287355877929076.xml
+INJECTED from /Users/mac/AndroidStudioProjects/TelemetryBridge/library/build/intermediates/tmp/ProcessLibraryManifest/debug/tempAndroidManifest18204287355877929076.xml
+	android:targetSdkVersion
+		INJECTED from /Users/mac/AndroidStudioProjects/TelemetryBridge/library/build/intermediates/tmp/ProcessLibraryManifest/debug/tempAndroidManifest18204287355877929076.xml
+		ADDED from /Users/mac/AndroidStudioProjects/TelemetryBridge/library/build/intermediates/tmp/ProcessLibraryManifest/debug/tempAndroidManifest18204287355877929076.xml
+		INJECTED from /Users/mac/AndroidStudioProjects/TelemetryBridge/library/build/intermediates/tmp/ProcessLibraryManifest/debug/tempAndroidManifest18204287355877929076.xml
+	android:minSdkVersion
+		INJECTED from /Users/mac/AndroidStudioProjects/TelemetryBridge/library/build/intermediates/tmp/ProcessLibraryManifest/debug/tempAndroidManifest18204287355877929076.xml
+		ADDED from /Users/mac/AndroidStudioProjects/TelemetryBridge/library/build/intermediates/tmp/ProcessLibraryManifest/debug/tempAndroidManifest18204287355877929076.xml
+		INJECTED from /Users/mac/AndroidStudioProjects/TelemetryBridge/library/build/intermediates/tmp/ProcessLibraryManifest/debug/tempAndroidManifest18204287355877929076.xml

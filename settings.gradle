@@ -1,0 +1,3 @@
+rootProject.name = 'TelemetryBridge'
+include ':app'
+include ':library'

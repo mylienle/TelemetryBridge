@@ -1,0 +1,20 @@
+apply plugin: 'com.android.library'
+
+android {
+    namespace 'com.example.telemetrybridge'
+    compileSdkVersion 33
+    defaultConfig {
+        minSdkVersion 21
+        targetSdkVersion 33
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+}
+
+dependencies {
+    implementation 'io.opentelemetry:opentelemetry-api:1.37.0'
+    implementation 'io.opentelemetry:opentelemetry-sdk:1.37.0'
+    implementation 'io.opentelemetry:opentelemetry-exporter-otlp:1.37.0'
+}

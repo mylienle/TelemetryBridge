@@ -1,0 +1,36 @@
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion 33
+    defaultConfig {
+        applicationId "com.example.telemetryapp"
+        minSdkVersion 21
+        targetSdkVersion 33
+        versionCode 1
+        versionName "1.0"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+}
+
+dependencies {
+    // Reference the TelemetryBridge library
+    implementation project(':library')
+    
+    // OpenTelemetry dependencies
+    implementation 'io.opentelemetry:opentelemetry-api:1.37.0'
+    implementation 'io.opentelemetry:opentelemetry-sdk:1.37.0'
+    implementation 'io.opentelemetry:opentelemetry-exporter-otlp:1.37.0'
+    
+    // Android dependencies
+    implementation 'androidx.appcompat:appcompat:1.6.1'
+    implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
+} 
